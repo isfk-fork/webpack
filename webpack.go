@@ -11,7 +11,7 @@ type entrypoints struct {
 }
 
 func encoreTags(name, epyt string) (string, error) {
-	config.LoadFile("./template/build/entrypoints.json")
+	config.LoadFile("./public/build/entrypoints.json")
 	confMap := config.Map()
 
 	for _, value := range confMap {
@@ -27,14 +27,14 @@ func encoreTags(name, epyt string) (string, error) {
 						cssHTML := ""
 						for _, file := range v.([]interface{}) {
 							cssFile := file.(string)
-							cssHTML += fmt.Sprintf("<link href='./template%s'>\r\n", cssFile)
+							cssHTML += fmt.Sprintf("<link href='./public%s'>\r\n", cssFile)
 						}
 						return cssHTML, nil
 					case "js":
 						jsHTML := ""
 						for _, file := range v.([]interface{}) {
 							jsFile := file.(string)
-							jsHTML += fmt.Sprintf("<script src='./template%s'></script>\r\n", jsFile)
+							jsHTML += fmt.Sprintf("<script src='./public%s'></script>\r\n", jsFile)
 						}
 						return jsHTML, nil
 					}
