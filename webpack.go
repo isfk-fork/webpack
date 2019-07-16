@@ -14,8 +14,6 @@ func encoreTags(name, epyt string) (string, error) {
 	config.LoadFile("./template/build/entrypoints.json")
 	confMap := config.Map()
 
-	fmt.Println(epyt)
-
 	for _, value := range confMap {
 		for key, val := range value.(map[string]interface{}) {
 			if key == name {
