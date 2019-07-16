@@ -14,24 +14,29 @@ func encoreTags(name, epyt string) (string, error) {
 	config.LoadFile("./template/build/entrypoints.json")
 	confMap := config.Map()
 
+	fmt.Println(epyt)
+
 	for _, value := range confMap {
 		for key, val := range value.(map[string]interface{}) {
 			if key == name {
 				for k, v := range val.(map[string]interface{}) {
-					fmt.Println(k, v)
-					switch epyt {
+					if k != epyt {
+						continue
+					}
+
+					switch k {
 					case "css":
 						cssHTML := ""
 						for _, file := range v.([]interface{}) {
 							cssFile := file.(string)
-							cssHTML += fmt.Sprintf("<link href='./template/%s'>", cssFile)
+							cssHTML += fmt.Sprintf("<link href='./template%s'>\r\n", cssFile)
 						}
 						return cssHTML, nil
 					case "js":
 						jsHTML := ""
 						for _, file := range v.([]interface{}) {
 							jsFile := file.(string)
-							jsHTML += fmt.Sprintf("<script src='./template/%s'></script>", jsFile)
+							jsHTML += fmt.Sprintf("<script src='./template%s'></script>\r\n", jsFile)
 						}
 						return jsHTML, nil
 					}
