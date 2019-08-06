@@ -10,7 +10,7 @@ https://symfony.com/doc/current/frontend.html
 ## 环境需求
 ## 安装
 
-执行命令`go get -u github.com/gosoeasy/webpack`
+执行命令`go get -u github.com/go-box/webpack`
 
 依赖于 `@symfony/webpack-encore`, 安装 `yarn add @symfony/webpack-encore --dev`
 
