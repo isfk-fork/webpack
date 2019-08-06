@@ -1,4 +1,4 @@
-module github.com/gosoeasy/webpack
+module github.com/go-box/webpack
 
 go 1.12
 
